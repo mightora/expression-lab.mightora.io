@@ -62,4 +62,15 @@
   __FOOTER__
   <div id="toast" role="status" aria-live="polite" hidden style="position:fixed;z-index:100;bottom:24px;right:20px;padding:10px 15px;border-radius:9px;background:#17365e;color:white;box-shadow:0 10px 26px #10294944"></div>
   __SCRIPT_ASSETS__
+
+<!-- Cloudflare Web Analytics: production only; no network traffic for local or offline copies -->
+<script>
+  if (window.location.hostname === 'expression-lab.mightora.io') {
+    const analyticsBeacon = document.createElement('script');
+    analyticsBeacon.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+    analyticsBeacon.defer = true;
+    analyticsBeacon.setAttribute('data-cf-beacon', '{"token":"54355574b7594d3d9d9946038d33925a","spa":true}');
+    document.head.appendChild(analyticsBeacon);
+  }
+</script>
 </body></html>
