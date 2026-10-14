@@ -10,12 +10,12 @@ A **free, privacy-conscious, static web application** for learning, exploring an
 - Mock `triggerBody()`, `triggerOutputs()`, `body()`, `outputs()`, `variables()`, `parameters()`, `items()` and `item()` sources.
 - Text interpolation with `@{...}`, `@` expression prefix, bracket and null-safe property access.
 - Locally generated result, explicit errors, clipboard copy.
-- Matching online and standalone offline versions generated from shared source.
+- Matching online and standalone offline versions generated from shared source and the same full-width Mightora author section.
 - Responsive Mightora design, components, author section, real workflow-evidence links, and network transparency instructions.
 
 ## Getting started
 
-Requires Node.js 20+ and Python 3 for ZIP packaging. There are no npm dependencies.
+Requires Node.js 20+ and Python 3 for ZIP packaging. There are no npm dependencies. The first build needs network access to retrieve Mightora's shared author background, portrait and TechTweedie logo; the generated offline HTML embeds those images and never requests them at runtime. Later builds reuse the local `src/author-assets/` cache.
 
 ```bash
 npm run check

@@ -18,5 +18,16 @@ assert.match(offline,/evaluateExpression/);
 assert.ok(statSync(join(dist,'downloads','expression-lab-offline.zip')).size>1000);
 execFileSync('python3',['-c',`from pathlib import Path;import zipfile;d=Path('${dist}/downloads');z=zipfile.ZipFile(d/'expression-lab-offline.zip');assert z.read('index.html')==(d/'expression-lab-offline.html').read_bytes()`]);
 for (const wf of ['ci.yml','codeql.yml','deploy.yml','dependency-review.yml'])assert.ok(existsSync(join(root,'.github','workflows',wf)),`missing ${wf}`);
-assert.ok(offline.indexOf('class="trust"') < offline.indexOf('</mightora-footer>'));
-console.log('Build verification passed. Online / offline branding, CSP, workflow paths, and ZIP parity checked.');
+for (const [edition,html] of [['online',online],['offline',offline]]) {
+  const mainEnd=html.indexOf('</main>');
+  const authorStart=html.indexOf('<mightora-author');
+  const badgesStart=html.indexOf('class="trust container"');
+  const footerStart=html.indexOf('<mightora-footer');
+  assert.ok(mainEnd>=0 && mainEnd<authorStart && authorStart<badgesStart && badgesStart<footerStart,`${edition} author must span the page and precede badges and footer`);
+  for(const className of ['author-section-overlay','author-section-inner','author-photos','author-avatar','author-blog-logo','author-bio','author-links'])assert.ok(html.includes(className),`${edition} missing ${className}`);
+}
+assert.doesNotMatch(offline,/author-fallback/);
+assert.match(offline,/<mightora-author[^>]+class="author-section"/);
+assert.match(offline,/body\[data-edition="offline"\] mightora-author\.author-section\{background-image:url\("data:image\/png;base64,/);
+assert.ok((offline.match(/<img src="data:image\/png;base64,/g)||[]).length>=2,'offline portrait and logo must be embedded');
+console.log('Build verification passed. Online / offline branding, CSP, author layout, artwork, workflow paths, and ZIP parity checked.');

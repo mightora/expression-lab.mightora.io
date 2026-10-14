@@ -9,3 +9,18 @@
 @media(max-width:780px){.container{padding:0 15px}.hero{padding:28px 0}.hero-art{display:none}.hero h1{font-size:33px}.workbench,.network-grid{grid-template-columns:1fr}.grid-three{grid-template-columns:1fr}.function-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.full-panel{padding:16px}.local-hamburger{display:inline-flex}.local-menu{display:none;position:absolute;z-index:40;top:60px;left:0;right:0;background:white;padding:16px 20px;box-shadow:var(--shadow);flex-direction:column;align-items:start}.local-menu.open{display:flex}.local-header-inner{position:relative}.pane-head{padding:15px}.pane-body{padding:15px}.section-intro{align-items:start;flex-direction:column}.hero-pills{gap:6px}}
 @media(max-width:460px){.function-grid{grid-template-columns:1fr}.sample-row{grid-template-columns:1fr}.context-actions{align-items:start;flex-direction:column}.hero h1{font-size:30px}.btn{font-size:12px}.quick-jump-nav .container{gap:17px}.grid-three{gap:9px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* Mightora author component — identical structure for online and offline editions. */
+mightora-author.author-section{display:block;background-size:cover;background-position:center;background-repeat:no-repeat;color:#fff}
+.author-section-overlay{background:rgba(0,0,0,.45);padding:5rem 1.5rem}
+.author-section-inner{max-width:780px;margin:0 auto;display:flex;gap:2rem;align-items:center}
+.author-photos{display:flex;flex-direction:column;gap:1rem;align-items:center;flex-shrink:0}
+.author-avatar{width:120px;height:120px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,.4)}
+.author-blog-logo{width:110px;height:auto}
+.author-heading{font-size:1.375rem;font-weight:800;color:#fff;margin:0 0 .75rem}
+.author-bio{font-size:.9375rem;line-height:1.7;color:rgba(255,255,255,.88);margin:0 0 1.25rem}
+.author-bio strong{color:#fff}
+.author-links{display:flex;gap:.75rem;flex-wrap:wrap}
+.author-link{display:inline-block;background:rgba(255,255,255,.15);color:#fff;text-decoration:none;padding:.4rem .875rem;border-radius:.375rem;font-size:.8125rem;transition:background .2s}
+.author-link:hover,.author-link:focus-visible{background:rgba(255,255,255,.28);color:#fff;text-decoration:none}
+@media(max-width:600px){.author-section-inner{flex-direction:column;text-align:center}.author-links{justify-content:center}.author-section-overlay{padding:3rem 1.25rem}}
